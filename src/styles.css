@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Source+Serif+4:wght@700&display=swap');
+
+:root {
+  --ink: #17211b;
+  --muted: #66736b;
+  --surface: #fffdf7;
+  --panel: #ffffff;
+  --line: #e4ddcf;
+  --green: #1f7a52;
+  --blue: #22577a;
+  --amber: #a86413;
+  --red: #b73535;
+  --shadow: 0 24px 70px rgba(44, 35, 20, 0.12);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Manrope, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(246, 189, 96, 0.28), transparent 30rem),
+    radial-gradient(circle at bottom right, rgba(34, 87, 122, 0.16), transparent 28rem),
+    #f6f1e6;
+}
+a { color: inherit; text-decoration: none; font-weight: 700; }
+button, input, textarea, select { font: inherit; }
+button {
+  border: 0;
+  border-radius: 14px;
+  padding: 0.85rem 1.15rem;
+  background: var(--green);
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.6; cursor: wait; }
+.secondary { background: var(--blue); }
+.danger { background: var(--red); }
+.ghost-button { background: transparent; color: var(--green); border: 1px solid var(--line); }
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  padding: 4rem;
+  align-items: center;
+}
+.login-hero h1, .topbar h1, .dashboard-hero h2, .page-title h2, .detail-header h2 {
+  font-family: 'Source Serif 4', serif;
+  letter-spacing: -0.04em;
+}
+.login-hero h1 { font-size: clamp(3rem, 7vw, 6.8rem); line-height: 0.9; margin: 0.5rem 0 1rem; }
+.login-hero p { max-width: 42rem; font-size: 1.2rem; color: var(--muted); }
+.login-card, .card, .table-card {
+  background: rgba(255, 253, 247, 0.9);
+  border: 1px solid rgba(228, 221, 207, 0.85);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+.login-card { padding: 2rem; display: grid; gap: 1rem; }
+.login-card h2 { margin: 0; font-size: 2rem; }
+label { display: grid; gap: 0.45rem; color: var(--muted); font-weight: 700; }
+input, textarea, select {
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  color: var(--ink);
+}
+textarea { min-height: 120px; resize: vertical; }
+.demo-users { display: grid; gap: 0.25rem; color: var(--muted); font-size: 0.9rem; }
+
+.shell { min-height: 100vh; display: grid; grid-template-columns: 280px 1fr; }
+.sidebar {
+  padding: 1.4rem;
+  background: rgba(23, 33, 27, 0.96);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.brand { display: flex; align-items: center; gap: 0.85rem; }
+.brand-mark { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 16px; background: #f6bd60; color: var(--ink); font-weight: 900; }
+.brand span { display: block; color: #c9d2ca; font-size: 0.82rem; }
+.sidebar nav { display: grid; gap: 0.45rem; }
+.sidebar nav a { color: #dfe8e1; padding: 0.85rem 1rem; border-radius: 14px; }
+.sidebar nav a.active, .sidebar nav a:hover { background: rgba(255,255,255,0.12); color: white; }
+.main-panel { padding: 1.4rem 2rem 3rem; }
+.topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.6rem; }
+.topbar h1 { margin: 0.2rem 0 0; font-size: 2.2rem; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.16em; color: var(--amber); font-size: 0.78rem; font-weight: 900; }
+.user-card { background: white; border: 1px solid var(--line); border-radius: 18px; padding: 0.85rem 1rem; display: grid; }
+.user-card span { color: var(--muted); font-size: 0.88rem; }
+.page-stack { display: grid; gap: 1.2rem; }
+.dashboard-hero { padding: 2rem; border-radius: 30px; background: linear-gradient(135deg, #173526, #22577a); color: white; box-shadow: var(--shadow); }
+.dashboard-hero h2 { margin: 0.4rem 0; font-size: 3rem; }
+.dashboard-hero p { color: #dfe8e1; max-width: 48rem; }
+.metric-grid, .detail-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.metric-grid article, .card { padding: 1.2rem; }
+.metric-grid article { background: white; border: 1px solid var(--line); border-radius: 22px; }
+.metric-grid span, .detail-grid span { color: var(--muted); font-weight: 800; }
+.metric-grid strong { display: block; font-size: 2.5rem; }
+.table-card { overflow: hidden; }
+table { width: 100%; border-collapse: collapse; background: white; }
+th, td { text-align: left; padding: 1rem; border-bottom: 1px solid var(--line); }
+th { color: var(--muted); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.form-grid.single { grid-template-columns: 1fr; }
+.span-2 { grid-column: span 2; }
+.form-actions, .button-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.detail-header { display: flex; align-items: center; justify-content: space-between; background: white; border: 1px solid var(--line); border-radius: 28px; padding: 1.4rem; }
+.detail-header h2 { margin: 0; font-size: 2.4rem; }
+.prose p { color: var(--muted); line-height: 1.7; }
+.actions-panel { display: grid; gap: 1rem; }
+.timeline { display: grid; gap: 1rem; }
+.timeline > div { border-left: 4px solid var(--green); padding-left: 1rem; }
+.timeline span, .timeline small { display: block; color: var(--muted); }
+.status { display: inline-flex; border-radius: 999px; padding: 0.35rem 0.75rem; font-size: 0.82rem; font-weight: 900; background: #e9eef0; }
+.status-Draft { color: #52606d; background: #eef2f5; }
+.status-PendingManagerApproval, .status-PendingFinanceReview { color: var(--amber); background: #fff3db; }
+.status-Approved { color: var(--green); background: #e6f4ee; }
+.status-Rejected { color: var(--red); background: #ffe8e8; }
+.status-Cancelled { color: #5c6470; background: #e8e8ea; }
+.alert { padding: 1rem; border-radius: 16px; background: #ffe8e8; color: var(--red); font-weight: 800; }
+.empty-state { padding: 2rem; border: 1px dashed var(--line); border-radius: 24px; color: var(--muted); background: rgba(255,255,255,0.7); }
+.admin-grid { display: grid; grid-template-columns: 360px 1fr; gap: 1rem; align-items: start; }
+.checkbox { display: flex; align-items: center; gap: 0.6rem; }
+
+@media (max-width: 900px) {
+  .login-page, .shell, .admin-grid { grid-template-columns: 1fr; }
+  .login-page { padding: 1.5rem; }
+  .sidebar { position: static; }
+  .metric-grid, .detail-grid, .form-grid { grid-template-columns: 1fr; }
+  .span-2 { grid-column: span 1; }
+  .topbar, .detail-header { align-items: flex-start; flex-direction: column; gap: 1rem; }
+}
