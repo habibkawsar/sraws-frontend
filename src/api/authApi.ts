@@ -4,7 +4,7 @@ import type { LoginResponse } from '../types';
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://sraws-backend.onrender.com/api",
+  baseURL: "https://sraws-backend.onrender.com",
 });
 
 export default API;
