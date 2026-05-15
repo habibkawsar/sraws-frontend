@@ -28,7 +28,7 @@ export function LoginPage() {
   return (
     <main className="login-page">
       <section className="login-hero">
-        <span className="eyebrow">Enterprise workflow</span>
+        <span className="eyebrow">Enterprise Workflow</span>
         <h1>Approve sponsorships with clean accountability.</h1>
         <p>Draft, route, approve, reject, and audit every sponsorship request from one role-aware workspace.</p>
       </section>
