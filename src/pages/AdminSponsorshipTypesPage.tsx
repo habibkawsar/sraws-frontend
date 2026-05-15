@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useState } from 'react';
 import { getApiErrorMessage } from '../api/http';
 import { sponsorshipTypesApi } from '../api/sponsorshipTypesApi';
 import type { SponsorshipType } from '../types';
+import { useAuth } from '../context/AuthContext';
 
 export function AdminSponsorshipTypesPage() {
   const [types, setTypes] = useState<SponsorshipType[]>([]);
@@ -9,9 +10,30 @@ export function AdminSponsorshipTypesPage() {
   const [form, setForm] = useState({ name: '', description: '', isActive: true });
   const [error, setError] = useState('');
 
-  const load = async () => setTypes(await sponsorshipTypesApi.list(true));
-  useEffect(() => { load().catch((err) => setError(getApiErrorMessage(err))); }, []);
+//   const load = async () => setTypes(await sponsorshipTypesApi.list(true));
+//   useEffect(() => {
+//   const token = localStorage.getItem('sraws_token');
 
+//   if (!token) return;
+
+//   load().catch((err) =>
+//     setError(getApiErrorMessage(err))
+//   );
+// }, []);
+
+  const { user } = useAuth();
+
+  const load = async () => {
+    setTypes(await sponsorshipTypesApi.list(true));
+  };
+
+  useEffect(() => {
+    if (!user) return;
+
+    load().catch((err) =>
+      setError(getApiErrorMessage(err))
+    );
+  }, [user]);
   const submit = async (event: FormEvent) => {
     event.preventDefault();
     try {

@@ -8,14 +8,33 @@ export function DashboardPage() {
   const [requests, setRequests] = useState<SponsorshipRequestListItem[]>([]);
 
   useEffect(() => {
-    const load = async () => {
-      if (user?.role === 'Requestor') setRequests(await requestsApi.mine());
-      if (user?.role === 'Manager') setRequests(await requestsApi.pendingManager());
-      if (user?.role === 'FinanceAdmin') setRequests(await requestsApi.pendingFinance());
-      if (user?.role === 'SystemAdmin') setRequests(await requestsApi.all());
-    };
-    load();
-  }, [user]);
+  const load = async () => {
+    if (!user) return;
+
+    try {
+      if (user.role === 'Requestor') {
+        setRequests(await requestsApi.mine());
+      }
+
+      if (user.role === 'Manager') {
+        setRequests(await requestsApi.pendingManager());
+      }
+
+      if (user.role === 'FinanceAdmin') {
+        setRequests(await requestsApi.pendingFinance());
+      }
+
+      if (user.role === 'SystemAdmin') {
+        setRequests(await requestsApi.all());
+      }
+    } catch (err) {
+      console.error("Failed to load requests:", err);
+      setRequests([]); // safe fallback
+    }
+  };
+
+  load();
+}, [user]);
 
   const approved = requests.filter((x) => x.status === 'Approved').length;
   const pending = requests.filter((x) => x.status.includes('Pending')).length;

@@ -1,7 +1,8 @@
+// http.ts
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:5088/api'
+  baseURL: import.meta.env.VITE_API_BASE_URL ?? 'https://sraws-backend.onrender.com/api/'
 });
 
 api.interceptors.request.use((config) => {
